@@ -51,7 +51,9 @@ write.xlsx <- function(x, file, sheetName="Sheet1",
     iOffset <- 1
   if (row.names)
     jOffset <- 1
-
+  if(grepl("~",file)){
+    file <- path.expand(file)
+  }
   if (append && file.exists(file)){
     wb <- loadWorkbook(file)
   } else {

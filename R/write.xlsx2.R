@@ -5,6 +5,9 @@
 write.xlsx2 <- function(x, file, sheetName="Sheet1",
   col.names=TRUE, row.names=TRUE, append=FALSE, ...)
 {
+  if(grepl("~",file)){
+    file <- path.expand(file)
+  }
   if (append && file.exists(file)){
     wb <- loadWorkbook(file)
   } else {
